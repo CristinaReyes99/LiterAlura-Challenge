@@ -13,6 +13,8 @@ public class Autor {
     private String nombre;
     private Integer fechaDeNacimiento;
     private Integer fechaDeFallecimiento;
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Libro> libros;
 
 
 
@@ -30,7 +32,13 @@ public class Autor {
                 '}';
     }
 
+    public List<Libro> getLibros() {
+        return libros;
+    }
 
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
+    }
 
     public Long getId() {
         return Id;

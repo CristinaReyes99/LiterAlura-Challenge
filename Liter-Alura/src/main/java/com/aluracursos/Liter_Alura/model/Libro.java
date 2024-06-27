@@ -12,19 +12,30 @@ public class Libro {
     private Long Id;
     @Column (unique = true)
     private String titulo;
+//    private List<DatosAutor> autorList;
     private List<String> idiomas;
     private Integer numeroDeDescargas;
-    @Transient
-    private List<DatosAutor> autor;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Autor autor;
 
     public Libro() {}
 
     public Libro(DatosLibro datosLibro) {
+
         this.titulo = datosLibro.titulo();
         this.idiomas = datosLibro.idiomas();
-        this.autor = datosLibro.autor();
+        this.autor = autor;
         this.numeroDeDescargas = datosLibro.numeroDeDescargas();
     }
+
+//    public Libro(DatosLibro datosLibro) {
+//        this.titulo = datosLibro.titulo();
+//        this.idiomas = datosLibro.idiomas();
+//        this.autor = autor;
+//        this.numeroDeDescargas = datosLibro.numeroDeDescargas();
+//    }
 
 
     @Override
@@ -53,11 +64,12 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public List<DatosAutor> getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(List<DatosAutor> autor) {
+    public void setAutor(Autor autor) {
+
         this.autor = autor;
     }
 

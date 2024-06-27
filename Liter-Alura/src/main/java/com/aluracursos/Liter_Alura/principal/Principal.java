@@ -15,10 +15,12 @@ public class Principal {
     private ConsumoAPI consumoAPI = new ConsumoAPI();
     private ConvierteDtos conversor = new ConvierteDtos();
     private Scanner teclado = new Scanner(System.in);
+    private LibroRepository repositorio;
 
     private List<DatosLibro> datosLibros  = new ArrayList<>();
 
     public Principal(LibroRepository repository) {
+        this.repositorio = repository;
     }
 
 
@@ -74,7 +76,8 @@ public class Principal {
         if(libroBuscado.isPresent()){
             System.out.println("     LIBRO ENCONTRADO");
             Libro libro = new Libro(libroBuscado.get());
-             String ResultadoLibro = """
+            repositorio.save(libro);
+            String ResultadoLibro = """
                 
                     ---------LIBRO---------
                     Libro: %s 
@@ -84,10 +87,9 @@ public class Principal {
                     -----------------------
                     
                     """.formatted(libro.getTitulo(),
-                    libro.getAutor().get(0).nombre(),
+                    libro.getAutor().getNombre(),
                     libro.getIdiomas().get(0),
                     libro.getNumeroDeDescargas());
-
             System.out.println(ResultadoLibro);
 
         }else {
