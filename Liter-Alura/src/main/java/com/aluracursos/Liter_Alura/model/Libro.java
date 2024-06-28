@@ -1,52 +1,34 @@
 package com.aluracursos.Liter_Alura.model;
+
 import jakarta.persistence.*;
 import java.util.List;
-import java.util.Optional;
-
 
 @Entity
-@Table (name = "libros")
+@Table(name = "libros")
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    @Column (unique = true)
+    @Column(unique = true)
     private String titulo;
-//    private List<DatosAutor> autorList;
     private List<String> idiomas;
     private Integer numeroDeDescargas;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
     public Libro() {}
 
     public Libro(DatosLibro datosLibro) {
-
         this.titulo = datosLibro.titulo();
         this.idiomas = datosLibro.idiomas();
-        this.autor = autor;
         this.numeroDeDescargas = datosLibro.numeroDeDescargas();
+        if (!datosLibro.autor().isEmpty()) {
+            this.autor = new Autor(datosLibro.autor().get(0));
+        }
     }
 
-//    public Libro(DatosLibro datosLibro) {
-//        this.titulo = datosLibro.titulo();
-//        this.idiomas = datosLibro.idiomas();
-//        this.autor = autor;
-//        this.numeroDeDescargas = datosLibro.numeroDeDescargas();
-//    }
-
-
-    @Override
-    public String toString() {
-        return "Libro: " + titulo + '\'' +
-                ", Autor: '" + autor + '\'' +
-                ", Idioma: " + idiomas + '\'' +
-                ", Total de descargas: " + numeroDeDescargas + '\'';
-    }
-
-
+    // Getters y setters
 
     public Long getId() {
         return Id;
@@ -69,7 +51,6 @@ public class Libro {
     }
 
     public void setAutor(Autor autor) {
-
         this.autor = autor;
     }
 

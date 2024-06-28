@@ -16,6 +16,7 @@ public class Autor {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Libro> libros;
 
+    public Autor() {}
 
 
     public Autor(DatosAutor datosAutor) {
