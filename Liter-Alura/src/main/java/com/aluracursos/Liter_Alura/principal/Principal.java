@@ -81,7 +81,8 @@ public class Principal {
                     -----------------------
                     """.formatted(libro.getTitulo(),
                     libro.getAutor().getNombre(),
-                    String.join(", ", libro.getIdiomas()),
+                    //String.join(", ",
+                            libro.getIdiomas(),
                     libro.getNumeroDeDescargas());
             System.out.println(ResultadoLibro);
         } else {
@@ -106,7 +107,7 @@ public class Principal {
                         -----------------------
                         """.formatted(libro.getTitulo(),
                         libro.getAutor().getNombre(),
-                        String.join(", ", libro.getIdiomas()),
+                        libro.getIdiomas(),
                         libro.getNumeroDeDescargas());
                 System.out.println(imprimirLibro);
             }
@@ -131,25 +132,36 @@ public class Principal {
     }
 
     private void listarAutoresVivosEnUnDeterminadoAno() {
-        // Implementar la funcionalidad para listar los autores vivos en un determinado año
+        System.out.println("Escribe el año para listar los autores vivos:");
+        int ano = teclado.nextInt();
+        teclado.nextLine(); // Limpiar el buffer después de nextInt()
+
+        List<Autor> autores = repositorio.autoresVivos(ano);
+        if (autores.isEmpty()) {
+            System.out.println("No hay autores vivos en el año especificado.");
+        } else {
+            System.out.println("Autores vivos en el año " + ano + ":");
+            for (Autor autor : autores) {
+                System.out.printf("Nombre: %s - Fecha de nacimiento: %d\n", autor.getNombre(), autor.getFechaDeNacimiento());
+            }
+        }
     }
 
     private void listarLibrosPorIdioma() {
         System.out.println("Escribe el idioma para listar los libros (ej. 'en', 'es', 'fr'):");
         String idioma = teclado.nextLine();
-        List<Libro> libros = repositorio.findByIdioma(idioma);
+        List<Libro> libros = repositorio.librosPorIdiomas(idioma);
         if (libros.isEmpty()) {
-            System.out.println("No hay libros registrados en el idioma: " + idioma);
+            System.out.println("No hay libros registrados en el idioma especificado.");
         } else {
             System.out.println("Lista de libros en el idioma '" + idioma + "':");
-            for (Libro libro : libros) {
-                System.out.println("---------LIBRO---------");
+            libros.forEach(libro -> {
                 System.out.println("Título: " + libro.getTitulo());
                 System.out.println("Autor: " + libro.getAutor().getNombre());
-                System.out.println("Idiomas: " + String.join(", ", libro.getIdiomas()));
+                System.out.println("Idiomas: " + libro.getIdiomas()); // Aquí imprimirías la lista de idiomas
                 System.out.println("Número de descargas: " + libro.getNumeroDeDescargas());
-                System.out.println("-----------------------");
-            }
+                System.out.println("----------------------------------");
+            });
         }
     }
 }
