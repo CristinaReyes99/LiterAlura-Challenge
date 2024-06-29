@@ -13,7 +13,7 @@ public class Autor {
     private String nombre;
     private Integer fechaDeNacimiento;
     private Integer fechaDeFallecimiento;
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Libro> libros;
 
     public Autor() {}
@@ -32,6 +32,8 @@ public class Autor {
                 ", fechaDeFallecimiento='" + fechaDeFallecimiento + '\'' +
                 '}';
     }
+
+    // Getters y setters
 
     public List<Libro> getLibros() {
         return libros;
