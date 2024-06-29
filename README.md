@@ -43,10 +43,54 @@ El proyecto se desarrollo utilizando Java y el framework Spring Boot y se ha com
 
 ## Características de la Aplicación y Demostración
 
-### Caracteristicas 
+### 1. Busqueda de libros
+La aplicación LiterAlura permite a los usuarios buscar libros por título a través de una integración con la API Gutendex. Utilizando un menú interactivo en consola, los usuarios pueden ingresar el título del libro deseado. La aplicación realizará una solicitud a la API y mostrará los resultados encontrados, incluyendo detalles como el título del libro, el nombre del autor, los idiomas disponibles y el número de descargas. Esta funcionalidad proporciona a los usuarios una forma eficiente de encontrar información específica sobre libros de interés.
+
+<div align="center">
+
+[![Video de Búsqueda de libros](https://img.youtube.com/vi/17JLRUQoTZA/0.jpg)](https://www.youtube.com/watch?v=17JLRUQoTZA)
+
+</div>
+
+### 2. Listado de libros registrados
+LiterAlura mantiene un registro de todos los libros buscados por los usuarios a través de la API Gutendex. Los usuarios pueden acceder a un listado completo de libros consultados, que incluye detalles como el título del libro, el nombre del autor, los idiomas disponibles y el número de descargas. Esta función permite a los usuarios revisar fácilmente los libros previamente consultados y gestionar su catálogo personal de manera organizada.
+
+<div align="center">
+
+[![Video Listado de libros registrados](https://img.youtube.com/vi/3x3rWIOjjuM/0.jpg)](https://www.youtube.com/watch?v=3x3rWIOjjuM)
+
+</div>
 
 
-### Demostración
+
+### 3. Listado de autores registrados
+LiterAlura permite a los usuarios ver una lista completa de autores registrados en la base de datos. A través del menú textual, los usuarios pueden acceder a una lista detallada que incluye el nombre, año de nacimiento y año de fallecimiento de cada autor.
+
+<div align="center">
+
+[![Video Listado de autores registrados](https://img.youtube.com/vi/KjpnEZ2kxeM/0.jpg)](https://www.youtube.com/watch?v=KjpnEZ2kxeM)
+
+</div>
+
+
+### 4. Listado de autores vivos en un determinado año
+LiterAlura permite a los usuarios consultar y listar autores vivos en un año específico, utilizando datos almacenados en la base de datos. Los usuarios ingresan el año deseado y la aplicación muestra una lista de autores cuyas fechas de nacimiento y fallecimiento indican que estaban vivos durante ese año. Esta función proporciona a los usuarios una manera eficiente de explorar y descubrir autores relevantes según el período histórico deseado.
+
+<div align="center">
+
+[![Video Listado por autores vivos en un año determinado](https://img.youtube.com/vi/WKUXLnGFnM8/0.jpg)](https://www.youtube.com/watch?v=WKUXLnGFnM8)
+
+</div>
+
+
+### 5. Listado de libros por idiomas
+LiterAlura permite a los usuarios listar libros registrados en la base de datos según el idioma. A través de un menú textual, los usuarios pueden seleccionar el idioma deseado, y la aplicación mostrará todos los libros almacenados en ese idioma, proporcionando una herramienta útil para explorar la biblioteca según las preferencias lingüísticas del usuario.
+
+<div align="center">
+
+[![Video Listado por idiomas](https://img.youtube.com/vi/QDjqQOuY3uk/0.jpg)](https://www.youtube.com/watch?v=QDjqQOuY3uk)
+
+</div>
 
 
 ## Acceso al Proyecto
